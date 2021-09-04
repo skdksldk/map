@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { createGlobalStyle } from 'styled-components';
+import KakaoMap from './components/KakaoMap';
+
+const GlobalStyle = createGlobalStyle `
+  body {
+    margin: 0 auto;
+  }
+  a {
+  text-decoration: none;
+  }
+  button {
+    border: none;
+    outline: none;
+    text-align: center;
+  }
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [district, setDistrict] = useState('');
+    const [userLocation, setUserLocation] = useState({
+        lat: 0,
+        lng: 0,
+    });
+
+
+    return (
+
+        <
+        div >
+        <
+        GlobalStyle / >
+        <
+        KakaoMap district = { district }
+        userLocation = { userLocation }
+        /> <
+        /div>
+    );
 }
 
 export default App;
