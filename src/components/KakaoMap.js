@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { findWifiLocations } from '../services/wifiAPI';
+import { findWifiLocations } from '../services/findWifiAPI';
 const { kakao } = window;
 
 export default function Map({ district, userLocation }) {
@@ -10,8 +10,8 @@ export default function Map({ district, userLocation }) {
 
     useEffect(() => {
         const options = {
-            center: new kakao.maps.LatLng(37.5326, 126.99),
-            level: 9
+            center: new kakao.maps.LatLng(37.51752, 127.04746),
+            level: 7
         };
 
 
@@ -29,9 +29,9 @@ export default function Map({ district, userLocation }) {
             try {
                 const locations = await findWifiLocations();
 
-                console.log(locations);
+                //console.log(locations);
                 setWifiLocation(locations);
-                console.log(3);
+
             } catch (error) {
 
                 console.log(error);
@@ -54,9 +54,9 @@ export default function Map({ district, userLocation }) {
 
                     map: map,
 
-                    position: new kakao.maps.LatLng(el.WGS84_Y, el.WGS84_X),
+                    position: new kakao.maps.LatLng(el.LNT, el.LAT),
 
-                    title: el.NAME_ENG
+                    title: el.X_SWIFI_ADRES2
                 });
             });
 
